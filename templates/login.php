@@ -1,12 +1,14 @@
 
-<?php echo $message; ?>
+<div class="login-form">
+  <?php echo $message; ?>
 
-<form name="frmLogin" action="authenticate.php" method="post">
-   Student ID:
-   <input name="txtid" type="text" /></br>
-   <br/>
-   Password:
-   <input name="txtpwd" type="password" /></br>
-   <br/>
-   <input type="submit" value="Login" name="btnlogin" />
-</form>
+  <form name="frmLogin" action="authenticate.php" method="post">
+    Student ID:
+    <input name="txtid" type="text" /></br>
+    <br/>
+    Password:
+    <input name="txtpwd" type="password" /></br>
+    <br/>
+    <input type="submit" value="Login" name="btnlogin" />
+  </form>
+</div>
