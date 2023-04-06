@@ -1,4 +1,4 @@
-<!-- Sudath Nawagamuwage CO551-Open Source System LoogBook 6-->
+<!-- Sudath Nawagamuwage | CO551-Open Source System | CW2-Student Course Administration System-->
 <!-- footer file for my page -->
 </div>
 			</div>

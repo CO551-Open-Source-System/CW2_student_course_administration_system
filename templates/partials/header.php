@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">        
-        <link rel="stylesheet" type="text/css" media="screen" href="css/stylesheet.css"/>
+        <!-- <link rel="stylesheet" type="text/css" media="screen" href="css/stylesheet.css"/> -->
         <title>CBNU Student Web Application</title>	
         <!-- styles and JS here --> 
     </head>
