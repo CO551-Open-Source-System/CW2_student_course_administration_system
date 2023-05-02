@@ -27,14 +27,14 @@
       // $data['content'] .= "<table border='1'>";
       // $data['content'] .= "<tr><th colspan='5' align='center'>Modules</th></tr>";
       // $data['content'] .= "<tr><th>Code</th><th>Type</th><th>Level</th></tr>";
-      $data['content'] .= "<table class='module-table'>";
+      $data['content'] .= "<table class='student-table'>";
       $data['content'] .= "<tr><th colspan='11' align='center'>Student Details</th></tr>";
       $data['content'] .= "<tr><th>Student ID</th><th>Date of Birth</th>";
-      // $data['content'] .= "<tr><th>Student ID</th><th>Password</th><th>Date of Birth</th>";
       $data['content'] .= "<th>First Name</th><th>Last Name</th><th>House</th>";
-      $data['content'] .= "<th>Town</th><th>County</th><th>Country</th><th>Postcode</th><th>Delete?</th></tr>";
+      $data['content'] .= "<th>Town</th><th>County</th><th>Country</th><th>Postcode</th><th>Image</th><th>Select to Delete</th></tr>";
       
       // Display the modules within the html table
+      // while($row = mysqli_fetch_assoc($result)){
       while($row = mysqli_fetch_array($result)) {
          $data['content'] .= "<tr><td> $row[studentid]</td>";
          //$data['content'] .= "<td> $row[password] </td>";

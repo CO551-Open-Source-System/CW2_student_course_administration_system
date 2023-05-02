@@ -18,16 +18,28 @@ if (isset($_SESSION['id'])) {
         // Hash the password
         $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-        // Insert the new student record into the database
-        $sql = "INSERT INTO student (studentid, password, dob, firstname, lastname, house, town, county, country, postcode)
-         VALUES ('$_POST[studentid]', '$hashed_password', '$_POST[dob]', '$_POST[firstname]', '$_POST[lastname]',
-          '$_POST[house]', '$_POST[town]', '$_POST[county]', '$_POST[country]', '$_POST[postcode]')";
+        // Handle image upload
+        $upload_dir = "img/";
+        $filename = $_FILES['image']['name'];
+        $tempname = $_FILES['image']['tmp_name'];
+        $filepath = $upload_dir . $filename;
 
-        // Execute the SQL query
-        if (mysqli_query($conn, $sql)) {
-            $data['content'] = "<p>New student record has been added.</p>";
+        // Move the uploaded file to the uploads directory
+        if (move_uploaded_file($tempname, $filepath)) {
+
+            // Insert the new student record into the database with the image filepath
+            $sql = "INSERT INTO student (studentid, password, dob, firstname, lastname, house, town, county, country, postcode, image)
+            VALUES ('$_POST[studentid]', '$hashed_password', '$_POST[dob]', '$_POST[firstname]', '$_POST[lastname]',
+            '$_POST[house]', '$_POST[town]', '$_POST[county]', '$_POST[country]', '$_POST[postcode]', '$filepath')";
+
+            // Execute the SQL query
+            if (mysqli_query($conn, $sql)) {
+                $data['content'] = "<p>New student record has been added.</p>";
+            } else {
+                $data['content'] = "<p>Error: " . mysqli_error($conn) . "</p>";
+            }
         } else {
-            $data['content'] = "<p>Error: " . mysqli_error($conn) . "</p>";
+            $data['content'] = "<p>Error: There was a problem uploading the image.</p>";
         }
 
     } else {
@@ -35,7 +47,7 @@ if (isset($_SESSION['id'])) {
         // Render the add student form
         $data['content'] = <<<EOD
         <h2>Add New Student</h2>
-        <form name="frmdetails" action="" method="post">
+        <form name="frmdetails" action="" method="post" enctype="multipart/form-data">
             Student ID:
             <input name="studentid" type="text" value="" required /><br/>
             Password:
@@ -56,6 +68,8 @@ if (isset($_SESSION['id'])) {
             <input name="country" type="text" value="" /><br/>
             Postcode:
             <input name="postcode" type="text" value="" /><br/>
+            Image:
+            <input type="file" name="image"><br/>
             <input type="submit" value="Save" name="submit"/>
         </form>
 EOD;
