@@ -14,23 +14,63 @@ if (isset($_SESSION['id'])) {
 
     // Check if the form has been submitted
     if (isset($_POST['submit'])) {
+        
+        // Validate student id
+        if (preg_match("/^[0-9a-zA-Z]+$/", $_POST['studentid'])) {
+            $studentid = $_POST['studentid'];
+        } else {
+            $data['content'] = "<p>Error: Invalid student ID.</p>";
+            echo template("templates/default.php", $data);
+            exit();
+        }
+
+        // Validate password
+        if (strlen($_POST['password']) >= 8) {
+            $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        } else {
+            $data['content'] = "<p>Error: Password must be at least 8 characters long.</p>";
+            echo template("templates/default.php", $data);
+            exit();
+        }
+
+        // Validate date of birth
+        if (preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/", $_POST['dob'])) {
+            $dob = $_POST['dob'];
+        } else {
+            $data['content'] = "<p>Error: Invalid date of birth.</p>";
+            echo template("templates/default.php", $data);
+            exit();
+        }
+
+        // Validate first name
+        if (preg_match("/^[a-zA-Z]+$/", $_POST['firstname'])) {
+            $firstname = $_POST['firstname'];
+        } else {
+            $data['content'] = "<p>Error: Invalid first name.</p>";
+            echo template("templates/default.php", $data);
+            exit();
+        }
+
+        // Validate postcode
+        if (preg_match("/^[a-zA-Z0-9 ]+$/", $_POST['postcode'])) {
+            $postcode = $_POST['postcode'];
+        } else {
+            $data['content'] = "<p>Error: Invalid postcode.</p>";
+            echo template("templates/default.php", $data);
+            exit();
+        }
 
         // Hash the password
         $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-        // Handle image upload
-        $upload_dir = "img/";
-        $filename = $_FILES['image']['name'];
-        $tempname = $_FILES['image']['tmp_name'];
-        $filepath = $upload_dir . $filename;
+        if (isset($_FILES['image'])){
 
-        // Move the uploaded file to the uploads directory
-        if (move_uploaded_file($tempname, $filepath)) {
+            $imagedata = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 
             // Insert the new student record into the database with the image filepath
             $sql = "INSERT INTO student (studentid, password, dob, firstname, lastname, house, town, county, country, postcode, image)
             VALUES ('$_POST[studentid]', '$hashed_password', '$_POST[dob]', '$_POST[firstname]', '$_POST[lastname]',
-            '$_POST[house]', '$_POST[town]', '$_POST[county]', '$_POST[country]', '$_POST[postcode]', '$filepath')";
+            '$_POST[house]', '$_POST[town]', '$_POST[county]', '$_POST[country]', '$_POST[postcode]', '$imagedata')";
 
             // Execute the SQL query
             if (mysqli_query($conn, $sql)) {
@@ -38,9 +78,9 @@ if (isset($_SESSION['id'])) {
             } else {
                 $data['content'] = "<p>Error: " . mysqli_error($conn) . "</p>";
             }
-        } else {
-            $data['content'] = "<p>Error: There was a problem uploading the image.</p>";
-        }
+
+        } 
+    
 
     } else {
 

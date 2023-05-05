@@ -22,12 +22,16 @@ for ($i = 0; $i < 5; $i++) {
     $house = $faker->buildingNumber;
     $town = $faker->city;
     $county = $faker->state;
-    $country = $faker->country;
+    $country = 'United Kingdom';
     $postcode = $faker->postcode;
+    $uploadDir = 'images/';
+    $profile_image = $faker->image($uploadDir, 400, 300, 'people', false);
+
+    
     
     // Construct SQL query to insert the fake data into the database
-    $sql = "INSERT INTO student (studentid, password, dob, firstname, lastname, house, town, county, country, postcode) 
-            VALUES ('$studentid', '$password', '$dob', '$firstname', '$lastname', '$house', '$town', '$county', '$country', '$postcode')";
+    $sql = "INSERT INTO student (studentid, password, dob, firstname, lastname, house, town, county, country, postcode, image) 
+            VALUES ('$studentid', '$password', '$dob', '$firstname', '$lastname', '$house', '$town', '$county', '$country', '$postcode' , '$profile_image')";
     
     // Execute the SQL query
     $result = mysqli_query($conn, $sql);
