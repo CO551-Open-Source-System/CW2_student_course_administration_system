@@ -46,7 +46,7 @@ if (isset($_SESSION['id'])) {
 
         // Render the add student form
         $data['content'] = <<<EOD
-        <h2>Add New Student</h2>
+        <h2 style="font-size: 24px; color: #2c3e50; margin-bottom: 20px;">Add New Student</h2>
         <form name="frmdetails" action="" method="post" enctype="multipart/form-data">
             Student ID:
             <input name="studentid" type="text" value="" required /><br/>
@@ -84,6 +84,6 @@ EOD;
 }
 
 // Include footer template
-echo template("templates/partials/footer.php");
+// echo template("templates/partials/footer.php");
 
 ?>

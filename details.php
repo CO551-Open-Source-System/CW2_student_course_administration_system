@@ -40,23 +40,23 @@ if (isset($_SESSION['id'])) {
       // also http://stackoverflow.com/questions/8280360/formatting-an-array-value-inside-a-heredoc
       $data['content'] = <<<EOD
       <h2 style="font-size: 24px; color: #2c3e50; margin-bottom: 20px;">My Details</h2>
-   <form name="frmdetails" action="" method="post">
-   First Name :   
-   <input name="txtfirstname" type="text" value="{$row['firstname']}" /><br/>
-   Surname :  
-   <input name="txtlastname" type="text"  value="{$row['lastname']}" /><br/>
-   Number and Street :
-   <input name="txthouse" type="text"  value="{$row['house']}" /><br/>
-   Town :
-   <input name="txttown" type="text"  value="{$row['town']}" /><br/>
-   County :
-   <input name="txtcounty" type="text"  value="{$row['county']}" /><br/>
-   Country :
-   <input name="txtcountry" type="text"  value="{$row['country']}" /><br/>
-   Postcode :
-   <input name="txtpostcode" type="text"  value="{$row['postcode']}" /><br/>
-   <input type="submit" value="Save" name="submit"/>
-   </form>
+      <form name="frmdetails" action="" method="post">
+         First Name :   
+         <input name="txtfirstname" type="text" value="{$row['firstname']}" /><br/>
+         Surname :  
+         <input name="txtlastname" type="text"  value="{$row['lastname']}" /><br/>
+         Number and Street :
+         <input name="txthouse" type="text"  value="{$row['house']}" /><br/>
+         Town :
+         <input name="txttown" type="text"  value="{$row['town']}" /><br/>
+         County :
+         <input name="txtcounty" type="text"  value="{$row['county']}" /><br/>
+         Country :
+         <input name="txtcountry" type="text"  value="{$row['country']}" /><br/>
+         Postcode :
+         <input name="txtpostcode" type="text"  value="{$row['postcode']}" /><br/>
+         <input type="submit" value="Save" name="submit"/>
+      </form>
 EOD;
 
    }

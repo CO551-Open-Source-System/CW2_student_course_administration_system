@@ -4,11 +4,7 @@ form {
     flex-direction: column;
     align-items:flex-start;
   }
-  h2 {
-    font-size: 24px;
-    color: #2c3e50;
-    margin-bottom: 20px;
-  }
+  
   
   label {
     margin: 10px 0;
@@ -29,7 +25,7 @@ form {
     border-radius: 5px;
     border: none;
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 0px;
     cursor: pointer;
   }
   

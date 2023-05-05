@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" media="screen" href="css/header.css"/>
         <link rel="stylesheet" type="text/css" media="screen" href="css/pagelayout.css"/>
         <link rel="stylesheet" type="text/css" media="screen" href="css/moduler.css"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="css/student.css"/>
         <link rel="stylesheet" type="text/css" media="screen" href="css/details.css"/>
         <link rel="stylesheet" type="text/css" media="screen" href="css/index.css"/>
         <title>CBNU Student Web Application</title>	
