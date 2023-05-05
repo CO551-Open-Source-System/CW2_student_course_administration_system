@@ -54,9 +54,9 @@
       }
       $data['content'] .= "</table>";
       
+      
       // Add delete button to the form
       $data['content'] .= "<input class=delete-btn' type='submit' name='deletebtn' value='Delete Selected Students' onclick='return confirm(\"Are you sure you want to delete this record?\")'>";
-      
       $data['content'] .= "</form>";
 
       // Render the template
