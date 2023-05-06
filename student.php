@@ -44,9 +44,7 @@
          $data['content'] .= "<td> $row[postcode] </td>";
          if (isset($row['image'])) {
             $data['content'] .= "<td><img src='getjpg.php?studentid=" . $row['studentid']. "' height='100' width='100'</td>";
-            // $data['content'] .= "<td><img src='getjpg.php?studentid=" . base64_encode($row['image']) . "' /></td>";
-            //   $data['content'] .= "<td><img src='data:image/jpeg;base64," . base64_encode($row['image']) . "' /></td>";
-            // echo "<td><img src='getjpg.php?studentid=" . $row['studentid']. "' height='100' width='100'</td>";
+            
          } else {
             $data['content'] .= "<td></td>";
          }
