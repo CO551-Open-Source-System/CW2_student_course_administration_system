@@ -15,51 +15,6 @@ if (isset($_SESSION['id'])) {
     // Check if the form has been submitted
     if (isset($_POST['submit'])) {
         
-        // Validate student id
-        if (preg_match("/^[0-9a-zA-Z]+$/", $_POST['studentid'])) {
-            $studentid = $_POST['studentid'];
-        } else {
-            $data['content'] = "<p>Error: Invalid student ID.</p>";
-            echo template("templates/default.php", $data);
-            exit();
-        }
-
-        // Validate password
-        if (strlen($_POST['password']) >= 8) {
-            $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        } else {
-            $data['content'] = "<p>Error: Password must be at least 8 characters long.</p>";
-            echo template("templates/default.php", $data);
-            exit();
-        }
-
-        // Validate date of birth
-        if (preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/", $_POST['dob'])) {
-            $dob = $_POST['dob'];
-        } else {
-            $data['content'] = "<p>Error: Invalid date of birth.</p>";
-            echo template("templates/default.php", $data);
-            exit();
-        }
-
-        // Validate first name
-        if (preg_match("/^[a-zA-Z]+$/", $_POST['firstname'])) {
-            $firstname = $_POST['firstname'];
-        } else {
-            $data['content'] = "<p>Error: Invalid first name.</p>";
-            echo template("templates/default.php", $data);
-            exit();
-        }
-
-        // Validate postcode
-        if (preg_match("/^[a-zA-Z0-9 ]+$/", $_POST['postcode'])) {
-            $postcode = $_POST['postcode'];
-        } else {
-            $data['content'] = "<p>Error: Invalid postcode.</p>";
-            echo template("templates/default.php", $data);
-            exit();
-        }
-
         // Hash the password
         $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
